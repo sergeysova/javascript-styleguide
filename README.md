@@ -101,6 +101,7 @@
   "yoda": "error",
   "no-unused-vars": "warning",
   "global-require": "error",
+
   "array-bracket-spacing": ["error", "never"],
   "block-spacing": ["error", "never"],
   "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
