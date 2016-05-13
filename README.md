@@ -994,8 +994,8 @@ const ex = `Hello ${name}. You balance: $${balance.value}`;
 
 ## On Discussion
 
-[Vars on top](http://eslint.org/docs/rules/vars-on-top)
-[Disallow nested ternaries](http://eslint.org/docs/rules/no-nested-ternary)
-[Disallow new Object](http://eslint.org/docs/rules/no-new-object)
-[JSDoc required](http://eslint.org/docs/rules/require-jsdoc)
-[Arrow confusing](http://eslint.org/docs/rules/no-confusing-arrow)
+- [Vars on top](http://eslint.org/docs/rules/vars-on-top)
+- [Disallow nested ternaries](http://eslint.org/docs/rules/no-nested-ternary)
+- [Disallow new Object](http://eslint.org/docs/rules/no-new-object)
+- [JSDoc required](http://eslint.org/docs/rules/require-jsdoc)
+- [Arrow confusing](http://eslint.org/docs/rules/no-confusing-arrow)
