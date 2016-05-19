@@ -135,3 +135,42 @@ const conf = {
 </div>
 ```
 
+Сравнить с:
+
+```jsx
+<div>
+  <h2>Account info</h2>
+  <section>
+  {
+    account.activated ?
+      <AccountInfo present account={account} style="wide">
+        <ButtonGroup wide>
+          <Button primary onClick={this.handleEdit}>Edit</Button>
+          <Button rounded onClick={this.handleFrustrate}>Frustrate</Button>
+        </ButtonGroup>
+      </AccountInfo> :
+      <div className="info disabled">Your account is disabled!</div>
+  }
+  </section>
+  <section className="primary">
+    {
+      !account.activated ? null :
+        <div className="info success">Your account active!</div>
+    }
+    {
+      account.access.can('funds.add') ?
+        <FundsAddWidget account={account} small /> :
+        <AccountRequestAccess account={account} funct="funds.add">
+          Please, activate funding in account settings
+        </AccountRequestAccess>
+    }
+    {
+      System.upgrades.has() ? <SystemUpgrades has={true} /> : null
+    }
+    {
+      account.settings.get('upgradable') ? <AccountUpgradable widget account={account} /> : null
+    }
+  </section>
+</div>
+```
+
