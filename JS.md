@@ -72,4 +72,66 @@ this.handleClick = this.handleClick.bind(this)
 следует выбрать тот способ, в котором наименьшее количество кода и одновременно наибольшая читабельность.
 
 
+## Ternary
+
+Использование тернарных выражений само по себе усложняет чтение кода.
+В некоторых случаях тернарное выражение сократит количество кода.
+
+Тернарное выражение должно быть однострочным, если общая длина не превышает 100 символов.
+
+При написании 3 строчного тернарного выражения символы `?` `:` необходимо ставить в начале строки, а также необходим одинарный отступ.
+
+В случае многострочного тернарного выражения, выравнивание кода, должно быть 2 отступа.
+
+```js
+
+const fund = fundingType === 'temporary' ? fundingValue.demo() : fundingValue.abs();
+
+const conf = {
+  amount: fundingValue.amount,
+  error: null,
+  accountID: account.present()
+    ? account.models.filter(acc => acc.type == 'funding').reduce((prev, curr) => curr.id ? curr.id : prev.id)
+    : ROM.defined.load(fundingValue.referrerId).model.id
+  multiplier: fund / fundingValue.total.reduce((prev, curr) => prev + curr)
+};
+```
+
+В многострочных тернарных выражениях JSX отступ перед символами `?` `:` ставить не нужно.
+
+Условие и символы тернарного выражения находящие на одном уровне отступов, позволяют с первого взгляда определить начало и конец блоков кода.
+
+```jsx
+<div>
+  <h2>Account info</h2>
+  <section>
+  {
+    account.activated
+    ? <AccountInfo present account={account} style="wide">
+        <ButtonGroup wide>
+          <Button primary onClick={this.handleEdit}>Edit</Button>
+          <Button rounded onClick={this.handleFrustrate}>Frustrate</Button>
+        </ButtonGroup>
+      </AccountInfo>
+    : <div className="info disabled">Your account is disabled!</div>
+  }
+  </section>
+  <section className="primary">
+    {
+      account.activated
+      ? <div className="info success">Your account active!</div>
+      : null
+    }
+    {
+      account.access.can('funds.add')
+      ? <FundsAddWidget account={account} small />
+      : <AccountRequestAccess account={account} funct="funds.add">
+          Please, activate funding in account settings
+        </AccountRequestAccess>
+    }
+    {System.upgrades.has() ? <SystemUpgrades has={true} /> : null}
+    {account.settings.get('upgradable') ? <AccountUpgradable widget account={account} /> : null}
+  </section>
+</div>
+```
 
